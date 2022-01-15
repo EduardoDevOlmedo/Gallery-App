@@ -5,7 +5,6 @@ export const useFetchImages = () => {
     const [image, setImage] = useState([])
     const [input, setInput] = useState("")        
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState("")
 
    const getData = useCallback(
        async() => {
@@ -20,10 +19,6 @@ export const useFetchImages = () => {
         setLoading(true)
         let res = await fetch(route)
         const data = await(res.json())
-
-        if(data.length === undefined){
-            setError(`There is no matching images with "${input}"`)
-        }
 
         if(data.results){
             setImage(data.results)
